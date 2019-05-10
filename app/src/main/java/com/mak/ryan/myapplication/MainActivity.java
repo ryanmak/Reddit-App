@@ -6,18 +6,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.mak.ryan.myapplication.connection.JSONDataTask;
-import com.mak.ryan.myapplication.connection.ResponseInterface;
 import com.mak.ryan.myapplication.entities.Post;
 import com.mak.ryan.myapplication.ui.PostListAdapter;
 import com.mak.ryan.myapplication.utils.ConnectionUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ResponseInterface {
+public class MainActivity extends AppCompatActivity {
 
     private List<Post> postList = new ArrayList<>();
 
@@ -36,21 +36,18 @@ public class MainActivity extends AppCompatActivity implements ResponseInterface
         }
     }
 
-    private void init(String output) {
-        postList.add(new Post());
-        postList.add(new Post());
+    private void init(String output) throws JSONException{
+        JSONObject page = new JSONObject(output);
+        JSONObject data = page.getJSONObject("data");
+        JSONArray children = data.getJSONArray("children");
 
-        System.out.println(output);
+        for (int i = 0; i < children.length(); i++) {
+            JSONObject child = children.getJSONObject(i);
+            System.out.println("kind" + child.getString("kind"));
+            postList.add(new Post(child));
+        }
 
         PostListAdapter adapter = new PostListAdapter(this, postList);
         postRecycler.setAdapter(adapter);
-    }
-
-    @Override
-    public void processFinish(String output) throws JSONException{
-        JSONObject list = new JSONObject(output);
-
-        list.getString("");
-        System.out.println(output);
     }
 }
