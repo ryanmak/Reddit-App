@@ -1,4 +1,4 @@
-package com.mak.ryan.myapplication.connection;
+package com.mak.ryan.myapplication.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -6,11 +6,11 @@ import android.net.NetworkInfo;
 
 public class ConnectionUtils {
 
-    static final int READ_TIMEOUT = 10000; // time is in milliseconds
+    public static final int READ_TIMEOUT = 10000; // time is in milliseconds
 
-    static final int CONNECT_TIMEOUT = 15000; // time is in milliseconds
+    public static final int CONNECT_TIMEOUT = 15000; // time is in milliseconds
 
-    static String BASE_URL = "https://www.reddit.com/r/all/.json";
+    public static String BASE_URL = "https://www.reddit.com/r/all/.json";
 
     // Check to see if user is connected to the internet
     public static boolean isNetworkAvailable(Context context) {

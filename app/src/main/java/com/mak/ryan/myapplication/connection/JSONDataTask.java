@@ -2,6 +2,10 @@ package com.mak.ryan.myapplication.connection;
 
 import android.os.AsyncTask;
 
+import com.mak.ryan.myapplication.utils.ConnectionUtils;
+
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,12 +13,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetJSONDataTask extends AsyncTask<String, Void, String> {
+public class JSONDataTask extends AsyncTask<String, Void, String> {
 
     private ResponseInterface response;
 
-    public GetJSONDataTask(ResponseInterface r) {
-        this.response =  r;
+    public JSONDataTask(ResponseInterface r) {
+        this.response = r;
     }
 
     @Override
@@ -28,7 +32,11 @@ public class GetJSONDataTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        response.processFinish(result);
+        try {
+            response.processFinish(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private String downloadUrl(String urlStr) throws IOException {
@@ -53,7 +61,7 @@ public class GetJSONDataTask extends AsyncTask<String, Void, String> {
             }
         }
     }
-    
+
     private String convertStreamToString(InputStream is) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
