@@ -18,15 +18,18 @@ public class Post {
 
     private String url;
 
+    private String selfText;
+
     //String date = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date (epoch*1000));
     //convert utc seconds to readable format ^^^
     public Post(JSONObject jsonData) {
         try {
             JSONObject jsonPost = jsonData.getJSONObject("data");
-            
+
             this.title = jsonPost.getString("title");
             this.karma = jsonPost.getInt("score");
             this.timeStampUTCSeconds = jsonPost.getInt("created_utc");
+            this.selfText = jsonPost.optString("selftext","");
             this.flairText = jsonPost.optString("link_flair_text","");
             this.username = "u/" + jsonPost.getString("author");
             this.subreddit = jsonPost.getString("subreddit_name_prefixed");
@@ -50,6 +53,10 @@ public class Post {
 
     public int getTimeStampUTCSeconds() {
         return timeStampUTCSeconds;
+    }
+
+    public String getSelfText() {
+        return selfText;
     }
 
     public String getFlairText() {

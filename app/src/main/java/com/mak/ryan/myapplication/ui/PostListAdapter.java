@@ -1,8 +1,11 @@
 package com.mak.ryan.myapplication.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,9 +48,28 @@ public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.title.setText(post.getTitle());
         holder.karma.setText(karma);
         holder.timestamp.setText(timeStamp);
-        holder.flair.setText(flair);
         holder.username.setText(post.getUsername());
         holder.subreddit.setText(post.getSubreddit());
+
+        // if post does/doesn't have selfText
+        if (post.getSelfText().isEmpty()) {
+            holder.selfText.setVisibility(View.INVISIBLE);
+            holder.thumbnail.setVisibility(View.VISIBLE);
+            holder.selfText.setText("");
+        } else {
+            holder.selfText.setVisibility(View.VISIBLE);
+            holder.thumbnail.setVisibility(View.INVISIBLE);
+            holder.selfText.setText(post.getSelfText());
+        }
+
+        // if flair text is empty/exists
+        if (post.getFlairText().isEmpty()) {
+            holder.flair.setText(flair);
+        } else {
+            SpannableString str = new SpannableString(flair);
+            str.setSpan(new BackgroundColorSpan(Color.LTGRAY), 0, flair.length(), SpannableString.SPAN_PARAGRAPH);
+            holder.flair.setText(str);
+        }
     }
 
     @Override
@@ -62,6 +84,7 @@ class PostListViewHolder extends RecyclerView.ViewHolder {
     Button downvoteBtn;
     TextView karma;
     ImageView thumbnail;
+    TextView selfText;
     TextView timestamp;
     TextView flair;
     TextView username;
@@ -79,6 +102,7 @@ class PostListViewHolder extends RecyclerView.ViewHolder {
         downvoteBtn = itemView.findViewById(R.id.downvote);
         karma = itemView.findViewById(R.id.karma_count);
         thumbnail = itemView.findViewById(R.id.thumbnail);
+        selfText = itemView.findViewById(R.id.self_text);
         timestamp = itemView.findViewById(R.id.timestamp);
         flair = itemView.findViewById(R.id.tag);
         username = itemView.findViewById(R.id.username);
@@ -87,6 +111,11 @@ class PostListViewHolder extends RecyclerView.ViewHolder {
         saveBtn = itemView.findViewById(R.id.favourite);
         shareBtn = itemView.findViewById(R.id.share);
         moreOptionsBtn = itemView.findViewById(R.id.more_options);
+
+        // in combination with round_outline_<view>.xml
+        // the below views now have rounded corners
+        thumbnail.setClipToOutline(true);
+        selfText.setClipToOutline(true);
 
         // set up button listeners
     }
