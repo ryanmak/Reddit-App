@@ -10,7 +10,7 @@ public class ConnectionUtils {
 
     public static final int CONNECT_TIMEOUT = 15000; // time is in milliseconds
 
-    public static String BASE_URL = "https://www.reddit.com/r/all/.json";
+    public static String BASE_URL = "https://www.reddit.com/r/leagueoflegends/.json";
 
     // Check to see if user is connected to the internet
     public static boolean isNetworkAvailable(Context context) {

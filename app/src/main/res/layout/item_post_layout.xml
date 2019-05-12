@@ -70,8 +70,8 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -190,14 +190,19 @@
 
             </LinearLayout>
 
-            <TextView
+            <com.mak.ryan.myapplication.ui.NoScrollTextView
                 android:id="@+id/self_text"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/round_outline"
+                android:fadingEdgeLength="32dp"
+                android:maxLines="10"
                 android:outlineProvider="background"
                 android:padding="8dp"
+                android:requiresFadingEdge="vertical"
                 android:text="TextView"
+                android:isScrollContainer="false"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="@+id/thumbnail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/thumbnail"

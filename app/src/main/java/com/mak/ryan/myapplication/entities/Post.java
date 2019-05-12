@@ -23,14 +23,15 @@ public class Post {
     //String date = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date (epoch*1000));
     //convert utc seconds to readable format ^^^
     public Post(JSONObject jsonData) {
+        String image = null;
         try {
             JSONObject jsonPost = jsonData.getJSONObject("data");
 
             this.title = jsonPost.getString("title");
             this.karma = jsonPost.getInt("score");
             this.timeStampUTCSeconds = jsonPost.getInt("created_utc");
-            this.selfText = jsonPost.optString("selftext","");
-            this.flairText = jsonPost.optString("link_flair_text","");
+            this.selfText = jsonPost.optString("selftext", "");
+            this.flairText = jsonPost.optString("link_flair_text", "");
             this.username = "u/" + jsonPost.getString("author");
             this.subreddit = jsonPost.getString("subreddit_name_prefixed");
             this.url = jsonPost.getString("permalink");

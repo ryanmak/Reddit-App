@@ -18,6 +18,9 @@ import com.mak.ryan.myapplication.entities.Post;
 
 import java.util.List;
 
+import ru.noties.markwon.Markwon;
+import ru.noties.markwon.html.HtmlPlugin;
+
 public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
@@ -44,6 +47,7 @@ public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         String karma = post.getKarma() + "";
         String timeStamp = post.getTimeStampUTCSeconds() + "";
         String flair = post.getFlairText().replace("null", "");
+        String selfText = post.getSelfText().replaceAll("###","").replaceAll("&amp;#x200B;","");
 
         holder.title.setText(post.getTitle());
         holder.karma.setText(karma);
@@ -52,22 +56,25 @@ public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.subreddit.setText(post.getSubreddit());
 
         // if post does/doesn't have selfText
-        if (post.getSelfText().isEmpty()) {
+        if (selfText.isEmpty()) {
             holder.selfText.setVisibility(View.INVISIBLE);
             holder.thumbnail.setVisibility(View.VISIBLE);
             holder.selfText.setText("");
         } else {
             holder.selfText.setVisibility(View.VISIBLE);
             holder.thumbnail.setVisibility(View.INVISIBLE);
-            holder.selfText.setText(post.getSelfText());
+
+            final Markwon markwon = Markwon.builder(context).usePlugin(HtmlPlugin.create()).build();
+            markwon.setMarkdown(holder.selfText, selfText);
         }
 
         // if flair text is empty/exists
-        if (post.getFlairText().isEmpty()) {
-            holder.flair.setText(flair);
+        if (flair.isEmpty()) {
+            holder.flair.setText("");
         } else {
-            SpannableString str = new SpannableString(flair);
-            str.setSpan(new BackgroundColorSpan(Color.LTGRAY), 0, flair.length(), SpannableString.SPAN_PARAGRAPH);
+            String f = " " + flair + " ";
+            SpannableString str = new SpannableString(f);
+            str.setSpan(new BackgroundColorSpan(Color.LTGRAY), 0, f.length(), SpannableString.SPAN_PARAGRAPH);
             holder.flair.setText(str);
         }
     }
@@ -84,7 +91,7 @@ class PostListViewHolder extends RecyclerView.ViewHolder {
     Button downvoteBtn;
     TextView karma;
     ImageView thumbnail;
-    TextView selfText;
+    NoScrollTextView selfText;
     TextView timestamp;
     TextView flair;
     TextView username;
