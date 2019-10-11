@@ -50,7 +50,7 @@
                 android:layout_height="40dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/ic_downvote_unclicked"
-                app:layout_constraintBottom_toTopOf="@+id/timestamp_tag_layout"
+                app:layout_constraintBottom_toBottomOf="@+id/self_text"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -70,8 +70,11 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
                 android:text="wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -80,10 +83,10 @@
                 android:id="@+id/more_options"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/ic_more_vert_black_24dp"
+                android:background="@drawable/ic_more"
                 app:layout_constraintBottom_toBottomOf="@+id/main_button_layout"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -190,19 +193,19 @@
 
             </LinearLayout>
 
-            <com.mak.ryan.myapplication.ui.NoScrollTextView
+            <com.mak.ryan.reddit.ui.NoScrollTextView
                 android:id="@+id/self_text"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/round_outline"
+                android:ellipsize="end"
                 android:fadingEdgeLength="32dp"
+                android:isScrollContainer="false"
                 android:maxLines="10"
                 android:outlineProvider="background"
                 android:padding="8dp"
                 android:requiresFadingEdge="vertical"
                 android:text="TextView"
-                android:isScrollContainer="false"
-                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="@+id/thumbnail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/thumbnail"

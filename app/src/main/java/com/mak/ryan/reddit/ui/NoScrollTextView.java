@@ -1,4 +1,4 @@
-package com.mak.ryan.myapplication.ui;
+package com.mak.ryan.reddit.ui;
 
 
 import android.annotation.TargetApi;

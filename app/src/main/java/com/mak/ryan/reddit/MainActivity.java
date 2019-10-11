@@ -1,13 +1,13 @@
-package com.mak.ryan.myapplication;
+package com.mak.ryan.reddit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.mak.ryan.myapplication.connection.DataDownloaderThread;
-import com.mak.ryan.myapplication.entities.Post;
-import com.mak.ryan.myapplication.ui.PostListAdapter;
+import com.mak.ryan.reddit.connection.DataDownloaderThread;
+import com.mak.ryan.reddit.entities.Post;
+import com.mak.ryan.reddit.ui.PostListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

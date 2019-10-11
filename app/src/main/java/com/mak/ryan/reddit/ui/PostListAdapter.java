@@ -1,4 +1,4 @@
-package com.mak.ryan.myapplication.ui;
+package com.mak.ryan.reddit.ui;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mak.ryan.myapplication.R;
-import com.mak.ryan.myapplication.entities.Post;
+import com.mak.ryan.reddit.R;
+import com.mak.ryan.reddit.entities.Post;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package com.mak.ryan.myapplication.entities;
+package com.mak.ryan.reddit.entities;
+
+import com.mak.ryan.reddit.util.TimestampUtility;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,7 +10,7 @@ public class Post {
 
     private int karma;
 
-    private int timeStampUTCSeconds;
+    private String timeStamp;
 
     private String flairText;
 
@@ -29,7 +31,7 @@ public class Post {
 
             this.title = jsonPost.getString("title");
             this.karma = jsonPost.getInt("score");
-            this.timeStampUTCSeconds = jsonPost.getInt("created_utc");
+            this.timeStamp = TimestampUtility.format(jsonPost.getInt("created_utc"));
             this.selfText = jsonPost.optString("selftext", "");
             this.flairText = jsonPost.optString("link_flair_text", "");
             this.username = "u/" + jsonPost.getString("author");
@@ -52,8 +54,8 @@ public class Post {
         karma = add ? (karma += 1) : (karma -= 1);
     }
 
-    public int getTimeStampUTCSeconds() {
-        return timeStampUTCSeconds;
+    public String getTimeStamp() {
+        return timeStamp;
     }
 
     public String getSelfText() {

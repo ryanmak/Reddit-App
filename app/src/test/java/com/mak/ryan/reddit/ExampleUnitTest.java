@@ -1,4 +1,4 @@
-package com.mak.ryan.myapplication;
+package com.mak.ryan.reddit;
 
 import org.junit.Test;
 

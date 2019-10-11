@@ -1,8 +1,8 @@
-package com.mak.ryan.myapplication.connection;
+package com.mak.ryan.reddit.connection;
 
 import android.util.Log;
 
-import com.mak.ryan.myapplication.entities.Post;
+import com.mak.ryan.reddit.entities.Post;
 
 import org.json.JSONArray;
 import org.json.JSONException;
