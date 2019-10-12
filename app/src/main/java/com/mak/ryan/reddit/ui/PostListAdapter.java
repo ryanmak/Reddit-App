@@ -45,9 +45,9 @@ public class PostListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Post post = list.get(position);
 
         String karma = post.getKarma() + "";
-        String timeStamp = post.getTimeStampUTCSeconds() + "";
+        String timeStamp = post.getTimeStamp();
         String flair = post.getFlairText().replace("null", "");
-        String selfText = post.getSelfText().replaceAll("###","").replaceAll("&amp;#x200B;","");
+        String selfText = post.getSelfText().replaceAll("###", "").replaceAll("&amp;#x200B;", "");
 
         holder.title.setText(post.getTitle());
         holder.karma.setText(karma);

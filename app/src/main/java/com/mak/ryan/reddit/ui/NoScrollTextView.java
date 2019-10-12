@@ -1,13 +1,10 @@
 package com.mak.ryan.reddit.ui;
 
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
-public class NoScrollTextView extends TextView {
+public class NoScrollTextView extends android.support.v7.widget.AppCompatTextView {
     public NoScrollTextView(Context context) {
         super(context);
     }
@@ -18,11 +15,6 @@ public class NoScrollTextView extends TextView {
 
     public NoScrollTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public NoScrollTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override

@@ -22,8 +22,6 @@ public class Post {
 
     private String selfText;
 
-    //String date = new java.text.SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new java.util.Date (epoch*1000));
-    //convert utc seconds to readable format ^^^
     public Post(JSONObject jsonData) {
         String image = null;
         try {
